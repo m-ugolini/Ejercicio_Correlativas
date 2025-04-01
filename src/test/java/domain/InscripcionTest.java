@@ -11,14 +11,14 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class InscripcionTest {
-        Materia am1;
-        Materia am2;
-        Materia aed;
-        Materia pdp;
-        Alumno maca;
-        Alumno franco;
-        Inscripcion inscripcionMaca;
-        Inscripcion inscripcionFranco;
+        private Materia am1;
+        private Materia am2;
+        private Materia aed;
+        private Materia pdp;
+        private Alumno maca;
+        private Alumno juan;
+        private Inscripcion inscripcionMaca;
+        private Inscripcion inscripcionJuan;
 
     @BeforeEach
     public void setUp() {
@@ -33,8 +33,8 @@ class InscripcionTest {
             maca.agregarMateriaAprobada(am1);
             maca.agregarMateriaAprobada(aed);
 
-            franco = new Alumno("franco", "andino");
-            franco.agregarMateriaAprobada(am1);
+            juan = new Alumno("juan", "perez");
+            juan.agregarMateriaAprobada(am1);
         }
     @Test
     public void inscripcionBuena1(){
@@ -46,10 +46,10 @@ class InscripcionTest {
 
     @Test
     public void inscripcionMala1(){
-        inscripcionFranco = new Inscripcion(franco);
-        inscripcionFranco.agregarMateriaACursar(pdp);
+        inscripcionJuan = new Inscripcion(juan);
+        inscripcionJuan.agregarMateriaACursar(pdp);
 
-        Assertions.assertFalse(inscripcionFranco.aprobada());
+        Assertions.assertFalse(inscripcionJuan.aprobada());
     }
 
     @Test
@@ -63,10 +63,10 @@ class InscripcionTest {
 
     @Test
     public void inscripcionMala2(){
-        inscripcionFranco = new Inscripcion(franco);
-        inscripcionFranco.agregarMateriaACursar(am2);
-        inscripcionFranco.agregarMateriaACursar(pdp);
+        inscripcionJuan = new Inscripcion(juan);
+        inscripcionJuan.agregarMateriaACursar(am2);
+        inscripcionJuan.agregarMateriaACursar(pdp);
 
-        Assertions.assertFalse(inscripcionFranco.aprobada());
+        Assertions.assertFalse(inscripcionJuan.aprobada());
     }
 }
